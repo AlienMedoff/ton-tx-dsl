@@ -24,6 +24,24 @@ Aether-TMA is a production-ready, scalable platform for deploying and coordinati
 ![Issues](https://img.shields.io/github/issues/AlienMedoff/5.03-bot)
 ![PR](https://img.shields.io/github/issues-pr/AlienMedoff/5.03-bot)
 
+## 🤖 **Try the Live Bot**
+
+### 📱 **Direct Access**
+🔗 **Bot Link:** [Start Aether-TMA Bot](https://t.me/YOUR_BOT_USERNAME)
+
+### 🚀 **Quick Commands**
+- `/start` - Initialize the bot
+- `/chat Hello!` - Chat with AI (default: Mistral)
+- `/chat groq Quick analysis` - Fast Groq response
+- `/chat gemini Complex analysis` - Advanced Gemini analysis
+- `/ton YOUR_WALLET_ADDRESS` - Check TON balance
+- `/status` - System health check
+
+### 📊 **Live Demo**
+The bot is running 24/7 with all 3 AI models active. Try it now!
+
+---
+
 ## 💡 **Why I built Aether-TMA?**
 
 *This project started out of pure frustration.* I was building a Telegram bot and kept running into `TelegramConflictError` every time the system tried to scale or handle complex AI responses. I realized that trying to squeeze bot logic and AI inference into one script wasn't just messy—it was unstable.
