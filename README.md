@@ -24,21 +24,21 @@ Aether-TMA is a production-ready, scalable platform for deploying and coordinati
 ![Issues](https://img.shields.io/github/issues/AlienMedoff/5.03-bot)
 ![PR](https://img.shields.io/github/issues-pr/AlienMedoff/5.03-bot)
 
-## 🤖 **Try the Live Bot**
+## 🤖 **Private Bot Implementation**
 
-### 📱 **Direct Access**
-🔗 **Bot Link:** [Start Aether-TMA Bot](https://t.me/YOUR_BOT_USERNAME)
+� **This is a private implementation** for inner circle testing and development.
 
-### 🚀 **Quick Commands**
-- `/start` - Initialize the bot
-- `/chat Hello!` - Chat with AI (default: Mistral)
-- `/chat groq Quick analysis` - Fast Groq response
-- `/chat gemini Complex analysis` - Advanced Gemini analysis
-- `/ton YOUR_WALLET_ADDRESS` - Check TON balance
-- `/status` - System health check
+### 🌐 **Public Infrastructure**
+- ✅ **Complete Source Code:** Available on GitHub
+- ✅ **Self-Hosting Guide:** Build your own bot
+- ✅ **API Documentation:** For developers
+- ✅ **Deployment Instructions:** Production-ready setup
 
-### 📊 **Live Demo**
-The bot is running 24/7 with all 3 AI models active. Try it now!
+### � **Get Your Own Bot**
+1. Clone this repository
+2. Follow the setup instructions
+3. Deploy your private instance
+4. Customize for your specific needs
 
 ---
 
