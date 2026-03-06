@@ -192,353 +192,325 @@ kubectl apply -f k8s/
 - **Model**: `mistral-large-latest`
 - **Response Time**: ~2.0s
 - **Token Limit**: ~60-80 tokens
-- **Use Case**: Primary model for balanced performance
 - **Cost**: Most economical for production
 
-### 🟢 **Groq (Ultra-Fast)**
-- **Model**: `llama-3.3-70b-versatile`
+### ⚡ Groq (Ultra-Fast)
+- **Model**: llama-3.3-70b-versatile
+- **Use Case**: Real-time responses and high-throughput
 - **Response Time**: ~0.6s (fastest)
 - **Token Limit**: ~70-80 tokens
-- **Use Case**: Real-time responses and high-throughput
 - **Cost**: Best for speed-critical applications
 
-### 🟢 **Google Gemini (Advanced)**
-- **Model**: `gemini-2.5-flash`
+### 🔮 Google Gemini (Advanced)
+- **Model**: gemini-2.5-flash
+- **Use Case**: Multimodal tasks and complex problem-solving
 - **Response Time**: ~2.9s
 - **Token Limit**: ~15-20 tokens
-- **Use Case**: Complex reasoning and multimodal tasks
 - **Cost**: Premium model for advanced features
 
-## 📱 **Telegram API Commands**
+## 📱 Telegram API Commands
 
 | Command | Parameters | Description |
-|---------|-------------|-------------|
+|----------|------------|-------------|
 | `/start` | - | System initialization and welcome message |
 | `/chat <message>` | `<message>` | AI conversation (default: Mistral) |
 | `/chat <model> <message>` | `<model> <message>` | Specific model chat (mistral/groq/gemini) |
-| `/status` | - | Real-time system health check |
+| `/ton <script>` | `<script>` | Execute TON DSL script |
+| `/balance <address>` | `<address>` | Check wallet balance |
+| `/status` | - | Real-time system status |
 | `/models` | - | List available AI models |
-| `/ton <address>` | `<address>` | TON wallet balance check |
 | `/help` | - | Complete command reference |
-| `/admin` | - | Administrative functions (restricted) |
 
-## 🔧 **REST API Endpoints**
+## 🔧 REST API Endpoints
 
-### **Core AI Endpoints**
-
-#### **Chat with AI**
-```bash
-curl -X POST http://127.0.0.1:8000/ai/chat \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -d '{
-    "message": "Hello! How are you today?",
+### Core AI Endpoints
+```http
+# Chat with AI
+POST /api/v1/chat
+{
+    "message": "Hello, how are you?",
     "model": "mistral",
-    "user_id": 123456789,
     "session_id": "optional_session_id"
-  }'
+}
+
+# Execute TON DSL
+POST /api/v1/ton/execute
+{
+    "script": "BALANCE OF MyWallet",
+    "dry_run": false
+}
+
+# Get system status
+GET /api/v1/status
 ```
 
-#### **List Available Models**
-```bash
-curl -X GET http://127.0.0.1:8000/ai/models \
-  -H "Authorization: Bearer YOUR_API_KEY"
+### TON Blockchain Endpoints
+```http
+# Execute transaction
+POST /api/v1/ton/transaction
+{
+    "from_address": "EQSenderAddress",
+    "to_address": "EQRecipientAddress",
+    "amount": "1500000000",
+    "message": "Payment for services"
+}
+
+# Get wallet info
+GET /api/v1/ton/wallet/{address}
 ```
 
-#### **System Health Check**
-```bash
-curl -X GET http://127.0.0.1:8000/ai/status \
-  -H "Authorization: Bearer YOUR_API_KEY"
-```
+## 🔒 Security & Compliance
 
-#### **Model Performance Test**
-```bash
-curl -X GET http://127.0.0.1:8000/ai/test/{model_name} \
-  -H "Authorization: Bearer YOUR_API_KEY"
-```
+### 🛡️ Security Features
+- **Zero-Trust Architecture**: All communications encrypted
+- **API Key Rotation**: Automated credential management
+- **Input Validation**: Comprehensive sanitization
+- **Rate Limiting**: DDoS protection and abuse prevention
+- **Audit Logging**: Complete activity tracking
+- **Session Management**: Secure session handling
 
-### **TON Blockchain Endpoints**
-
-#### **Transaction Processing**
-```bash
-curl -X POST http://127.0.0.1:8000/ton/transaction \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -d '{
-    "address": "EQD...your_wallet_address",
-    "amount": "1.5",
-    "token": "TON"
-  }'
-```
-
-#### **Balance Inquiry**
-```bash
-curl -X GET http://127.0.0.1:8000/ton/balance/{address} \
-  -H "Authorization: Bearer YOUR_API_KEY"
-```
-
-## 📁 **Project Structure**
-
-```
-aether-tma/
-├── 📂 agents/                 # AI Agent Management
-│   ├── __init__.py
-│   ├── ai_manager.py          # AI model coordination
-│   └── hub.py               # Central agent hub
-├── 📂 bot/                   # Telegram Interface
-│   ├── handlers/              # Command handlers
-│   │   ├── __init__.py
-│   │   ├── command_handler.py
-│   │   └── message_handler.py
-│   └── main.py              # Bot entry point
-├── 📂 core/                  # System Core
-│   ├── config.py             # Configuration management
-│   ├── security.py           # Security & authentication
-│   └── session.py           # Session management
-├── 📂 docker/               # Container Configuration
-│   ├── Dockerfile
-│   └── docker-compose.yml
-├── 📂 docs/                 # Documentation
-│   └── DEPLOYMENT.md
-├── 📂 scripts/              # Deployment Scripts
-│   └── deploy.sh
-├── 📄 final_ai_start.py      # Main AI Service
-├── 📄 mvp_telegram_bot.py   # Telegram Bot
-├── 📄 requirements.txt       # Dependencies
-├── 📄 .env.example         # Environment Template
-├── 📄 .gitignore          # Git Ignore Rules
-└── 📄 README.md            # This Documentation
-```
-
-## 🔒 **Security & Compliance**
-
-### 🛡️ **Security Features**
-- **🔐 Zero-Trust Architecture**: All communications encrypted
-- **🔑 API Key Rotation**: Automated credential management
-- **📊 Audit Logging**: Complete activity tracking
-- **🚨 Rate Limiting**: DDoS protection and abuse prevention
-- **🔒 Session Management**: Secure session handling
-- **🛡️ Input Validation**: Comprehensive input sanitization
-
-### 🔐 **Authentication**
+### 🔐 Authentication
 - **Telegram ID Verification**: User authentication through Telegram
 - **API Key Management**: Secure credential storage
 - **JWT Tokens**: Stateless authentication
 - **CORS Protection**: Cross-origin request security
 
-## 📊 **Monitoring & Observability**
+## 📊 Monitoring & Observability
 
-### 📈 **Metrics Collection**
+### 📈 Metrics Collection
 - **Request Rate**: API calls per minute
 - **Response Time**: Average latency tracking
 - **Error Rate**: Failure percentage monitoring
 - **Active Sessions**: Concurrent user tracking
 - **Model Usage**: Per-model utilization
-- **TON Transactions**: Blockchain operation metrics
+- **TON Operations**: Blockchain transaction metrics
 
-### 🚨 **Alerting System**
-- **High Error Rate**: >5% failure threshold
-- **Slow Response**: >3s latency alerts
-- **Service Unavailability**: Health check failures
-- **Security Events**: Suspicious activity detection
-- **Resource Exhaustion**: Memory/CPU thresholds
+### 📊 Prometheus Metrics
+```prometheus
+# Request metrics
+aether_tma_requests_total{method="chat", model="mistral"} 1234
+aether_tma_response_duration_seconds{model="mistral"} 1.23
 
-## 🐳 **Container Deployment**
+# TON metrics
+aether_tma_ton_transactions_total 567
+aether_tma_ton_operations_success_rate 0.98
 
-### **Docker Configuration**
+# System metrics
+aether_tma_active_sessions_total 42
+aether_tma_redis_memory_usage_bytes 134217728
+```
+
+## 🐳 Container Deployment
+
+### Docker Configuration
 ```yaml
-# docker-compose.yml
 version: '3.8'
 services:
-  aether-ai:
+  aether-tma:
     build: .
     ports:
       - "8000:8000"
     environment:
       - REDIS_URL=redis://redis:6379
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - TON_API_KEY=${TON_API_KEY}
     depends_on:
       - redis
       - prometheus
-  
-  aether-bot:
-    build: .
-    command: python mvp_telegram_bot.py
-    environment:
-      - AI_SERVICE_URL=http://aether-ai:8000
-    depends_on:
-      - aether-ai
-  
+
   redis:
     image: redis:7-alpine
     ports:
       - "6379:6379"
-  
+
   prometheus:
     image: prom/prometheus
     ports:
       - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
 ```
 
-### **Kubernetes Deployment**
+### Kubernetes Deployment
 ```yaml
-# k8s/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: aether-tma
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: aether-tma
-  template:
     metadata:
       labels:
         app: aether-tma
     spec:
       containers:
-      - name: aether-ai
+      - name: aether-tma
         image: aether-tma:latest
         ports:
-        - containerPort: 8000
+          - containerPort: 8000
         env:
-        - name: REDIS_URL
-          value: "redis://redis-service:6379"
+          - name: REDIS_URL
+            value: "redis://redis-service:6379"
 ```
 
-## 🧪 **Testing & Quality Assurance**
+## 🧪 Testing & Quality Assurance
 
-### **Automated Testing**
+### 🧪 Test Coverage
 ```bash
 # Run all tests
-python -m pytest tests/
+pytest tests/ -v --cov=.
 
-# Test AI models
-python -m pytest tests/test_ai_models.py
+# Test specific components
+pytest tests/test_ton_dsl.py -v
+pytest tests/test_ai_models.py -v
 
-# Test Telegram integration
-python -m pytest tests/test_telegram.py
-
-# Test TON integration
-python -m pytest tests/test_ton.py
+# Load testing
+python scripts/load_test.py --concurrent 100 --duration 300
 ```
 
-### **Load Testing**
+### 🔍 Code Quality
 ```bash
-# AI service load test
-python scripts/load_test_ai.py --concurrent 100 --duration 300
+# Linting
+pylint aether_tma/
+mypy aether_tma/
+black aether_tma/
 
-# Telegram bot stress test
-python scripts/stress_test_bot.py --users 50 --messages 1000
+# Security scanning
+bandit -r aether_tma/
+safety check
 ```
 
-## 🚨 **Troubleshooting Guide**
+## 🤝 Contributing Guidelines
 
-### **Common Issues & Solutions**
-
-#### **Port Conflicts**
-```bash
-# Find occupied ports
-netstat -ano | findstr :8000
-
-# Kill processes on port
-taskkill /F /PID <PID_NUMBER>
-
-# Alternative: Use different port
-python final_ai_start.py --port 8001
-```
-
-#### **AI Model Errors**
-```bash
-# Test individual models
-curl http://127.0.0.1:8000/ai/test/mistral
-curl http://127.0.0.1:8000/ai/test/groq
-curl http://127.0.0.1:8000/ai/test/gemini
-```
-
-#### **Telegram Bot Issues**
-```bash
-# Check bot token
-python -c "
-from aiogram import Bot
-import asyncio
-async def check_token():
-    bot = Bot('YOUR_TOKEN_HERE')
-    info = await bot.get_me()
-    print(f'Bot Info: {info}')
-asyncio.run(check_token())
-"
-
-# Reset webhook
-curl -X POST https://api.telegram.org/bot<TOKEN>/deleteWebhook
-```
-
-#### **Performance Optimization**
-```bash
-# Clear Redis cache
-redis-cli FLUSHALL
-
-# Restart services
-docker-compose restart
-
-# Monitor resources
-docker stats
-```
-
-## 🤝 **Contributing Guidelines**
-
-### **Development Workflow**
-1. **Fork Repository** from GitHub
-2. **Create Feature Branch**: `git checkout -b feature/amazing-feature`
-3. **Implement Changes** with comprehensive testing
-4. **Code Quality**: Follow PEP 8 and add documentation
+### 🚀 Development Workflow
+1. **Fork Repository** and create feature branch
+2. **Write Tests** for new functionality
+3. **Ensure Quality** with linting and type hints
+4. **Update Documentation** for all changes
 5. **Submit Pull Request** with detailed description
 
-### **Code Standards**
+### 📋 Code Standards
 - **Python 3.10+** compatibility required
 - **Type Hints** mandatory for all functions
 - **Docstrings** following Google style guide
 - **Unit Tests** minimum 80% coverage
 - **Security Review** required for all changes
 
-### **Pull Request Template**
-```markdown
-## Description
-Brief description of changes and motivation.
+### 🐛 Bug Reports
+- **Use GitHub Issues** for bug reports
+- **Include Environment Details** (OS, Python version, etc.)
+- **Provide Reproduction Steps** with exact commands
+- **Add Error Logs** with full stack traces
 
-## Type of Change
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Breaking change
-- [ ] Documentation update
+## 📄 License & Legal
 
-## Testing
-- [ ] Unit tests pass
-- [ ] Integration tests pass
-- [ ] Manual testing completed
+This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file for complete terms and conditions.
 
-## Security
-- [ ] Code reviewed for security issues
-- [ ] No hardcoded secrets
-- [ ] Input validation implemented
-```
-
-## 📄 **License & Legal**
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for complete terms and conditions.
-
-### **Third-Party Licenses**
+### 📜 Third-Party Licenses
 - **aiogram**: MIT License
 - **FastAPI**: MIT License
 - **Redis**: BSD License
 - **Docker**: Apache License 2.0
+
+## 🙏 Acknowledgments & Credits
+
+### 🧠 Core Technologies
+- **Mistral AI**: Advanced language models
+- **Groq**: Ultra-fast inference platform
+- **Google Gemini**: Multimodal AI capabilities
+- **TON Blockchain**: Decentralized computing platform
+- **aiogram**: Modern Telegram bot framework
+- **FastAPI**: High-performance web framework
+- **Redis**: In-memory data structure store
+
+### 🤖 Development Tools
+- **Docker**: Container platform
+- **Prometheus**: Monitoring system
+- **Grafana**: Analytics dashboards
+- **GitHub Actions**: CI/CD pipeline
+
+## 🚀 Production Deployment
+
+### 🏠 Local Development
+```bash
+# Start all services
+docker-compose up -d
+
+# Check logs
+docker-compose logs -f aether-tma
+
+# Stop services
+docker-compose down
+```
+
+### ☁️ Cloud Deployment
+```bash
+# Deploy to Railway
+railway up
+
+# Deploy to Render
+render deploy
+
+# Deploy to Heroku
+heroku container:push aether-tma
+```
+
+## 📱 Support & Contact
+
+### 🐛 Issues & Support
+- **GitHub Issues**: Report bugs and request features
+- **Discord Community**: [Join our developer community](https://discord.gg/aether-tma)
+- **Documentation**: [Complete API reference](https://docs.aether-tma.com)
+
+### 📊 Analytics & Tracking
+- **System Status**: [Real-time monitoring](https://status.aether-tma.com)
+- **Performance Metrics**: [Detailed analytics](https://metrics.aether-tma.com)
+- **Uptime Monitoring**: [24/7 availability](https://uptime.aether-tma.com)
+
+---
+
+## 🚀 Why I Built Aether-TMA
+
+I built Aether-TMA out of pure frustration with existing bot limitations. Traditional Telegram bots are simple echo machines - they can't handle complex multi-agent coordination or advanced TON blockchain operations.
+
+Aether-TMA transforms Telegram bots into **intelligent orchestrators** with a sophisticated **Transaction DSL** that makes complex TON operations as simple as writing natural language scripts.
+
+This isn't just another bot - it's a **complete development platform** for the next generation of TON applications.
+
+---
+
+## 🌟 Star This Repository
+
+If you find Aether-TMA useful for your projects, please consider giving it a ⭐ on GitHub!
+
+**[![GitHub stars](https://img.shields.io/github/stars/AlienMedoff/ton-tx-dsl?style=social)](https://github.com/AlienMedoff/ton-tx-dsl)**
+
+---
+
+## 🔗 Quick Links
+
+- **🚀 Live Demo**: [Try Aether-TMA now](https://t.me/aether_tma_bot)
+- **📚 Documentation**: [Complete API reference](https://docs.aether-tma.com)
+- **🐳 Docker Hub**: [Container images](https://hub.docker.com/r/aether-tma)
+- **📊 Monitoring**: [Live metrics](https://metrics.aether-tma.com)
+
+---
+
+**🚀 Aether-TMA: Where Advanced AI Meets TON Blockchain!**: Apache License 2.0
 
 ## 🙏 **Acknowledgments & Credits**
 
 ### **Core Technologies**
 - **[Mistral AI](https://mistral.ai/)** - Advanced language models
 - **[Groq](https://groq.com/)** - Ultra-fast inference platform
-- **[Google Gemini](https://ai.google.dev/)** - Multimodal AI capabilities
 - **[TON Blockchain](https://ton.org/)** - Decentralized computing platform
 
 ### **Development Tools**
