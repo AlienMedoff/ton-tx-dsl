@@ -423,12 +423,19 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file
 ### 🐛 **Issues & Support**
 - **GitHub Issues**: [Report bugs](https://github.com/AlienMedoff/ton-tx-dsl/issues)
 - **Discord Community**: [Join our developer community](https://discord.gg/ton-tx-dsl)
-- **Documentation**: [Complete API reference](https://docs.ton-tx-dsl.com)
+- **Documentation**: [Complete API reference](https://github.com/AlienMedoff/ton-tx-dsl)
 
 ### 📚 **Resources**
 - **Colab Notebook**: [Interactive demo](https://colab.research.google.com/github/AlienMedoff/ton-tx-dsl/blob/main/notebooks/aether_os_colab.ipynb)
-- **Smart Contract Docs**: [Contract specifications](https://contracts.ton-tx-dsl.com)
-- **DSL Reference**: [Complete language guide](https://dsl.ton-tx-dsl.com)
+- **Smart Contract Docs**: [Contract specifications](https://github.com/AlienMedoff/ton-tx-dsl/tree/main/contracts)
+- **DSL Reference**: [Complete language guide](https://github.com/AlienMedoff/ton-tx-dsl/wiki)
+
+---
+
+## 🚀 **One-Click Deployment**
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/AlienMedoff/ton-tx-dsl)
+[![Deploy to Railway](https://railway.app/button.svg)](https://railway.app/new?template=https://github.com/AlienMedoff/ton-tx-dsl)
 
 ---
 
