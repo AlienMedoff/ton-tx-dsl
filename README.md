@@ -426,7 +426,6 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file
 
 ### 🐛 **Issues & Support**
 - **GitHub Issues**: [Report bugs](https://github.com/AlienMedoff/ton-tx-dsl/issues)
-- **Discord Community**: [Join our developer community](https://discord.gg/ton-tx-dsl)
 - **Documentation**: [Complete API reference](https://github.com/AlienMedoff/ton-tx-dsl)
 
 ### 📚 **Resources**
@@ -448,8 +447,6 @@ If you find TON Transaction DSL useful, please give it a ⭐ on GitHub!
 
 - **🚀 Live Demo**: [Try in Colab](https://colab.research.google.com/github/AlienMedoff/ton-tx-dsl/blob/main/notebooks/aether_os_colab.ipynb)
 - **📚 Documentation**: [Full docs](https://github.com/AlienMedoff/ton-tx-dsl)
-- **🐳 Docker Hub**: [Container images](https://hub.docker.com/r/ton-tx-dsl)
-- **📊 Test Coverage**: [Coverage reports](https://github.com/AlienMedoff/ton-tx-dsl/actions)
 
 ---
 
