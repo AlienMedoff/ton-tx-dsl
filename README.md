@@ -1,3 +1,7 @@
+⚠️ VERY EARLY CONCEPT / PROOF-OF-CONCEPT ⚠️
+This is an experimental prototype with only \~12 commits.
+NOT production-ready. NOT audited. Use ONLY in MOCK mode.
+Do NOT send real TON or use real wallets — high risk of losing funds.
 # 🚀 TON Transaction DSL
 
 **Write TON blockchain transactions in plain English**
